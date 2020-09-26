@@ -1,0 +1,70 @@
+import React, { Fragment } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import Hidden from '@material-ui/core/Hidden';
+
+import ListComponent from './list'
+import MenuButton from './menuButton'
+
+import { Link } from 'react-router-dom';
+
+const useStyles = makeStyles(theme => ({
+    title: {
+        color: 'white',
+        textDecoration: 'none',
+        flexGrow: 1,
+    },
+
+    link: {
+        color: 'white',
+        textDecoration: 'none'
+    },
+
+    offset: theme.mixins.toolbar,
+
+    listRight: {
+        display: 'flex',
+    },
+
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    }
+}))
+
+const NavBar = () => {
+
+    const classes = useStyles()
+
+    return (
+        <Fragment>
+            <AppBar className={classes.appBar}>
+                <Toolbar>
+                    <MenuButton/>
+                    <Link to='/' className={classes.title} >
+                        <Button varient="h6" color="inherit">
+                            W3Live
+                     </Button>
+                    </Link>
+                    <Hidden xsDown>
+                     <div className={classes.listRight}>
+                        <Link to='/News' className={classes.link}>
+                            <ListComponent itemName='News' route='/news' color='#f5f5f5' />
+                        </Link>
+                        <Link to='/Replays' className={classes.link}>
+                            <ListComponent itemName='Replays' route='/replays' color='#f5f5f5' />
+                        </Link>
+                        <Link to="/aboutteam" className={classes.link}>
+                            <ListComponent itemName='About Team Development' route='/aboutteam' color='#f5f5f5' />
+                        </Link>
+                     </div>
+                    </Hidden>
+                </Toolbar>
+            </AppBar>
+            <div className={classes.offset}></div>
+        </Fragment>
+    );
+}
+
+export default NavBar;
