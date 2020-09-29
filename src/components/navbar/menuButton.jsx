@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListComponent from './list';
 import { Drawer, IconButton } from '@material-ui/core';
@@ -29,18 +29,12 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-function MenuButton() {
+function MenuButton({ toggleDrawer, state }) {
   const classes = useStyles();
 
-  const [state, setState] = useState({top: false});
-
-  const toggleDrawer = (anchor, open) => () => {
-    setState({[anchor]: open});
-  };
-
   return (
-    <div>
-      <Fragment key={anchor}>
+    <Fragment>
+      <div key={anchor}>
         <IconButton className={classes.menu} aria-label="Menu" onClick={toggleDrawer(anchor, true)}>
           <MenuIcon className={classes.colorMenu} />
         </IconButton>
@@ -50,24 +44,24 @@ function MenuButton() {
             route='/replays'
             color='#000'
             className={classes.links}
-            toggleDrawer={toggleDrawer(anchor, false)}
+            onClose={toggleDrawer(anchor, false)}
           />
           <ListComponent
             itemName='News'
             route='/news'
             color='#000'
             className={classes.links}
-            toggleDrawer={toggleDrawer(anchor, false)}
+            onClose={toggleDrawer(anchor, false)}
           />
           <ListComponent
             itemName='About Team Development'
             route='/aboutteam' color='#000'
             className={classes.links}
-            toggleDrawer={toggleDrawer(anchor, false)}
+            onClose={toggleDrawer(anchor, false)}
           />
         </Drawer>
-      </Fragment>
-    </div>
+      </div>
+    </Fragment>
   );
 }
 

@@ -4,11 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-
 import ListComponent from './list'
 import MenuButton from './menuButton'
-
 import { Link } from 'react-router-dom';
+
+import { ContextConsumer } from '../../state/context'
 
 const useStyles = makeStyles(theme => ({
     title: {
@@ -41,24 +41,22 @@ const NavBar = () => {
         <Fragment>
             <AppBar className={classes.appBar}>
                 <Toolbar>
-                    <MenuButton/>
+                    <ContextConsumer>
+                     {
+                        value => (
+                            <MenuButton toggleDrawer={ value.toggleDrawer } state={ value.drawer }/>
+                        )
+                     }
+                    </ContextConsumer>
                     <Link to='/' className={classes.title} >
-                        <Button varient="h6" color="inherit">
-                            W3Live
+                     <Button varient="h6" color="inherit">
+                        W3Live
                      </Button>
                     </Link>
-                    <Hidden xsDown>
-                     <div className={classes.listRight}>
-                        <Link to='/News' className={classes.link}>
-                            <ListComponent itemName='News' route='/news' color='#f5f5f5' />
-                        </Link>
-                        <Link to='/Replays' className={classes.link}>
-                            <ListComponent itemName='Replays' route='/replays' color='#f5f5f5' />
-                        </Link>
-                        <Link to="/aboutteam" className={classes.link}>
-                            <ListComponent itemName='About Team Development' route='/aboutteam' color='#f5f5f5' />
-                        </Link>
-                     </div>
+                    <Hidden xsDown className={classes.listRight}>
+                        <ListComponent itemName='News' route='/news' color='#f5f5f5' className={ classes.link } />
+                        <ListComponent itemName='Replays' route='/replays' color='#f5f5f5' className={ classes.link }/>
+                        <ListComponent itemName='About Team Development' route='/aboutteam' color='#f5f5f5' className={ classes.link } />
                     </Hidden>
                 </Toolbar>
             </AppBar>
