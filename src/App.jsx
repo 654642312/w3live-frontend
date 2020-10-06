@@ -7,14 +7,12 @@ import Replays from './views/replays';
 import ErrorPage from './views/errorPage';
 
 import NavBar from './components/navbar';
-import SideBar from './components/sidebar';
 
 
 function App() {
   return (
     <div>
       <NavBar />
-      <SideBar />
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/aboutteam' component={AboutTeamDevelopment} />

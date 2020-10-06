@@ -1,21 +1,20 @@
 import React from 'react';
-
+import banner from '../../images/banner.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     banner: {
-        backgroundImage: 'url(https://www.mmoingame.com/wp-content/uploads/2018/11/Warcraft-III-Reforged.jpg)',
-        height: '600px',
+        backgroundImage: `url(${banner})`,
+        height: '500px',
+        backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: "cover",
-        position: "relative",
-        display: "flex",
-        justifyContent: "center",
         [theme.breakpoints.down("sm")]: {
             height: 300,
             fontSize: "3em"
         },
         zIndex: theme.zIndex.drawer + 1,
+        marginBottom: '3rem'
     }
 }))
 
