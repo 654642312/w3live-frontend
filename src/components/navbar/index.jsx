@@ -8,8 +8,6 @@ import ListComponent from './list'
 import MenuButton from './menuButton'
 import { Link } from 'react-router-dom';
 
-import { ContextConsumer } from '../../state/context'
-
 const useStyles = makeStyles(theme => ({
     title: {
         color: 'white',
@@ -41,22 +39,16 @@ const NavBar = () => {
         <Fragment>
             <AppBar className={classes.appBar}>
                 <Toolbar>
-                    <ContextConsumer>
-                     {
-                        value => (
-                            <MenuButton toggleDrawer={ value.toggleDrawer } state={ value.drawer }/>
-                        )
-                     }
-                    </ContextConsumer>
+                    <MenuButton />
                     <Link to='/' className={classes.title} >
-                     <Button varient="h6" color="inherit">
-                        W3Live
+                        <Button varient="h6" color="inherit">
+                            W3Live
                      </Button>
                     </Link>
                     <Hidden xsDown className={classes.listRight}>
-                        <ListComponent itemName='News' route='/news' color='#f5f5f5' className={ classes.link } />
-                        <ListComponent itemName='Replays' route='/replays' color='#f5f5f5' className={ classes.link }/>
-                        <ListComponent itemName='About Team Development' route='/aboutteam' color='#f5f5f5' className={ classes.link } />
+                        <ListComponent itemName='News' route='/news' color='#f5f5f5' className={classes.link} />
+                        <ListComponent itemName='Replays' route='/replays' color='#f5f5f5' className={classes.link} />
+                        <ListComponent itemName='About Team Development' route='/aboutteam' color='#f5f5f5' className={classes.link} />
                     </Hidden>
                 </Toolbar>
             </AppBar>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListComponent from './list';
 import { Drawer, IconButton } from '@material-ui/core';
@@ -29,8 +29,15 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-function MenuButton({ toggleDrawer, state }) {
+function MenuButton() {
   const classes = useStyles();
+
+  const [state, setState] = useState(false);
+
+  const toggleDrawer = (anchor, open) => () => {
+    setState({ [anchor]: open });
+  };
+
 
   return (
     <Fragment>

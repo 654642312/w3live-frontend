@@ -12,7 +12,13 @@ const useStyles = makeStyles({
   root: {
     width: '100%',
     marginTop: '1rem',
-    marginBottom: '3rem'
+    marginBottom: '3rem',
+    cursor: 'pointer',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      background: '#f6f6f6',
+      transition: 'ease 0.5s'
+    }
   },
   media: {
     height: '140px',
@@ -23,7 +29,7 @@ const CardComponent = ({ title, text, image }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card data-aos='flip-left' className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}

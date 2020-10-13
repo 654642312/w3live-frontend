@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Grid, Container, Typography } from '@material-ui/core';
 import Banner from '../components/banner';
 import CardComponent from '../components/card';
@@ -6,8 +6,9 @@ import banner from '../images/banner.jpg';
 import ReplaysComponent from '../components/replays';
 
 const HomePage = () => {
+
   return (
-    <Fragment>
+    <div>
       <Banner />
       <Container maxWidth='md'>
         <Typography
@@ -65,7 +66,7 @@ const HomePage = () => {
           component='h2'
           gutterBottom={true}
         >
-         Most Popular Replays
+          Most Popular Replays
         </Typography>
         <ReplaysComponent
           date='12.02.20'
@@ -92,7 +93,7 @@ const HomePage = () => {
           teamOne='Lyn'
         />
       </Container>
-    </Fragment>
+    </div>
   );
 };
 

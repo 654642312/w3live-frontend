@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReplaysComponent from '../components/replays';
 import { Typography, Container } from '@material-ui/core';
 
@@ -29,7 +29,7 @@ const Replays = () => {
              duration='20:00'
              mode='1v1' 
              type='w3g'
-             teamTwo='Edgar018'
+             teamTwo='120'
              teamOne='Lyn'
             />
             <ReplaysComponent 
